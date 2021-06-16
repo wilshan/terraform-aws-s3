@@ -1,3 +1,7 @@
+variable "region_name" {
+  type = string
+  default = ""
+}
 
 variable "acl" {
   description = "details of Access control list"
