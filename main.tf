@@ -2,7 +2,7 @@
 
 resource "aws_s3_bucket" "bucket_name" {
   bucket = "var.bucketname"
-  acl    = "private"
+  acl    = "var.acl"
 
   tags = {
     Name        = "My bucket"
@@ -17,23 +17,29 @@ resource "aws_s3_bucket" "bucket_name" {
       enabled                                = lifecycle_rule.value.enabled
       prefix                                 = lifecycle_rule.value.prefix
       tags                                   = lifecycle_rule.value.tags
-      abort_incomplete_multipart_upload_days = lifecycle_rule.value.abort_incomplete_multipart_upload_days
-      
-noncurrent_version_transition {
-      days          = 30
-      storage_class = "STANDARD_IA"
+      abort_incomplete_multipart_upload_days = lifecycle_rule.value.abort_incomplete_multipart_upload_days 
     }
-      
-      
-      
-      #dynamic "transition" {
-     #   for_each = lifecycle_rule.value.enable_standard_ia_transition ? [1] : []
+     dynamic "noncurrent_version_transition" {
+        for_each = lifecycle_rule.value.enable_standard_ia_transition ? [1] : []
+        content {
+          days          = lifecycle_rule.value.noncurrent_version_standard_ia_transition_days
+          storage_class = "STANDARD_IA"
+        }
+      }
+     
+     dynamic "transition" {
+        for_each = lifecycle_rule.value.enable_standard_ia_transition ? [1] : []
 
-      #  content {
-       #   days          = lifecycle_rule.value.standard_transition_days
-          #storage_class = "STANDARD_IA"
-        #}
-    # noncurrent_version_expiration {
-   #     days = lifecycle_rule.value.noncurrent_version_expiration_days
-   #}
-}
+        content {
+          days          = lifecycle_rule.value.standard_transition_days
+          storage_class = "STANDARD_IA"
+        }
+      }
+     
+     dynamic "expiration" {
+        for_each = lifecycle_rule.value.enable_current_object_expiration ? [1] : []
+
+        content {
+          days = lifecycle_rule.value.expiration_days
+        }
+      }
