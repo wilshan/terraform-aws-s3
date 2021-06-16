@@ -11,7 +11,7 @@ resource "aws_s3_bucket" "bucket_source_data" {
    versioning {
     enabled = "var.versioning_enabled"
   }
-   dynamic "lifecycle_rule" {
+   lifecycle_rule {
     for_each = var.lifecycle_rules
     content {
       enabled                                = lifecycle_rule.value.enabled
@@ -19,7 +19,7 @@ resource "aws_s3_bucket" "bucket_source_data" {
       tags                                   = lifecycle_rule.value.tags
       abort_incomplete_multipart_upload_days = lifecycle_rule.value.abort_incomplete_multipart_upload_days 
     }
-     dynamic "noncurrent_version_transition" {
+    noncurrent_version_transition {
         for_each = lifecycle_rule.value.enable_standard_ia_transition ? [1] : []
         content {
           days          = lifecycle_rule.value.noncurrent_version_standard_ia_transition_days
@@ -27,7 +27,7 @@ resource "aws_s3_bucket" "bucket_source_data" {
         }
       }
      
-     dynamic "transition" {
+    transition {
         for_each = lifecycle_rule.value.enable_standard_ia_transition ? [1] : []
 
         content {
@@ -36,7 +36,7 @@ resource "aws_s3_bucket" "bucket_source_data" {
         }
       }
      
-     dynamic "expiration" {
+   expiration {
         for_each = lifecycle_rule.value.enable_current_object_expiration ? [1] : []
 
         content {
