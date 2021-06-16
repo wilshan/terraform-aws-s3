@@ -3,6 +3,13 @@ variable "region_name" {
   default = ""
 }
 
+variable "tags" {
+  type = map(string)
+  default = {
+    "name" : "mybucket"
+  }
+}
+
 variable "bucketname" {
   description = "Name of the bucket"
   type        = string
