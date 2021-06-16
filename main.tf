@@ -4,10 +4,7 @@ resource "aws_s3_bucket" "bucket_source_data" {
   bucket = "var.bucketname"
   acl    = "var.acl"
   tag    = "var.tag"
-}
-   versioning {
-    enabled = "var.versioning_enabled"
-  }
+  versioning = "var.versioning_enabled"
    lifecycle_rule {
     for_each = var.lifecycle_rules
     content {
