@@ -3,11 +3,8 @@
 resource "aws_s3_bucket" "bucket_source_data" {
   bucket = "var.bucketname"
   acl    = "var.acl"
+  tag    = "var.tag"
 }
-  tags = {
-    Name  = "My bucket"
-    Environment = terraform.workspace
-  }
    versioning {
     enabled = "var.versioning_enabled"
   }
