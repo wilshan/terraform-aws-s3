@@ -3,6 +3,12 @@ variable "region_name" {
   default = ""
 }
 
+variable "bucket_name" {
+  description = "Name of the bucket"
+  type        = string
+  default     = "private"
+}
+
 variable "acl" {
   description = "details of Access control list"
   type        = string
