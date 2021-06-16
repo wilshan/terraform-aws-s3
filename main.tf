@@ -6,7 +6,7 @@ resource "aws_s3_bucket" "bucket_source_data" {
 }
   tags = {
     Name        = "My bucket"
-    Environment = "Dev"
+    Environment = terraform.workspace
   }
    versioning {
     enabled = "var.versioning_enabled"
