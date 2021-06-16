@@ -3,7 +3,7 @@ variable "region_name" {
   default = ""
 }
 
-variable "bucket_name" {
+variable "bucketname" {
   description = "Name of the bucket"
   type        = string
   default     = "private"
