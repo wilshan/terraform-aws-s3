@@ -3,8 +3,16 @@
 resource "aws_s3_bucket" "bucket_source_data" {
   bucket = "var.bucketname"
   acl    = "var.acl"
-  tag    = "var.tag"
+  tags   = "var.tags"
   versioning = "var.versioning_enabled"
+   server_side_encryption_configuration {
+    rule {
+      apply_server_side_encryption_by_default {
+        kms_master_key_id = aws_kms_key.key.key_id
+        sse_algorithm     = "aws:kms"
+      }
+    }
+  }
    lifecycle_rule {
     for_each = var.lifecycle_rules
     content {
