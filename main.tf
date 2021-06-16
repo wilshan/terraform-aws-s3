@@ -37,3 +37,4 @@ resource "aws_s3_bucket" "bucket_source_data" {
           days = lifecycle_rule.value.expiration_days
         }
       }
+   }
