@@ -5,6 +5,7 @@ variable "region_name" {
 
 variable "tags" {
     type = map(string)
+  default = ""
 }
 
 variable "bucketname" {
