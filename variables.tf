@@ -5,7 +5,7 @@ variable "region_name" {
 
 variable "env" {
   type = string
-  default = string
+  default = ""
 }
 
 variable "bucketname" {
