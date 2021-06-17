@@ -5,7 +5,7 @@ resource "aws_s3_bucket" "bucket_source_data" {
   tags = {
     environment = var.env
   }
-  
+  block_public_acls   = true
  versioning {
     enabled = var.versioning_enabled
   }
