@@ -4,7 +4,7 @@ resource "aws_s3_bucket" "bucket_source_data" {
   bucket = var.bucketname
   acl    = var.acl
   tags = {
-    environment = "test"
+    environment = var.env
   }
   
  versioning {
@@ -24,25 +24,47 @@ resource "aws_s3_bucket" "bucket_source_data" {
     id      = var.lifecycle_rule_id
     enabled = var.lifecycle_rule_enabled
 
-    prefix = "*"
+    prefix = var.prefix
 
-    tags = {
-      rule      = "log"
-      autoclean = "true"
+    transition {
+      days          = var.standard_ia_days
+      storage_class = var.standard_ia
     }
 
     transition {
-      days          = 30
-      storage_class = "STANDARD_IA" # or "ONEZONE_IA"
-    }
-
-    transition {
-      days          = 60
-      storage_class = "GLACIER"
+      days          = var.glacier_days
+      storage_class = var.glacier
     }
 
     expiration {
-      days = 90
+      days = var.expiration_days
+    }
+  }
+  
+  data "aws_s3_bucket" "destination_bucket_data" {
+    filter
+    {name = "tag:Name"
+     values = ["mydestinationbucket"]
+    }
+} 
+  
+  replication_configuration {
+    role = var.sameaccount_replication_rule
+
+    rules {
+      prefix = var.prefix
+      status = var.replication_rules_enabled
+
+      destination {
+        bucket             = data.aws_s3_bucket.destination_bucket_data.bucket
+        replica_kms_key_id = var.kms_master_key_id
+      }
+
+      source_selection_criteria {
+        sse_kms_encrypted_objects {
+          enabled = var.replicate_objects_encryption
+        }
+      }
     }
   }
 }
