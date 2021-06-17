@@ -9,3 +9,4 @@ resource "aws_s3_bucket" "bucket_source_data" {
  versioning {
     enabled = var.versioning_enabled
   }
+}
