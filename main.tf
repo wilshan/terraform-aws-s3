@@ -6,7 +6,7 @@ resource "aws_s3_bucket" "bucket_source_data" {
   tags = {
     environment = "test"
   }
-  
+}
   {
   versioning = var.versioning_enabled
   }
