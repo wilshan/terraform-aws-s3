@@ -45,9 +45,8 @@ variable "lifecycle_rule_id" {
 }
 
 variable "lifecycle_rule_enabled" {
-    type        = string
+    type        = bool
     description = "Apply to all objects in the bucket"
-    default     = ""
 }
 
 variable "standard_ia_days" {
