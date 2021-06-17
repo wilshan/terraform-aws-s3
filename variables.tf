@@ -28,3 +28,5 @@ variable "versioning_enabled" {
   default     = true
 }
 
+variable "kms_arn" {}
+
