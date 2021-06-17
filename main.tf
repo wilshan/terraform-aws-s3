@@ -1,10 +1,4 @@
 # Bucket creation to keep source data
-data "aws_s3_bucket" "destination_bucket_data" {
-    filter {
-     name = "tag:Name"
-     values = ["mydestinationbucket"]
-    }
-} 
 resource "aws_s3_bucket" "bucket_source_data" {
   bucket = var.bucketname
   acl    = var.acl
@@ -46,8 +40,6 @@ resource "aws_s3_bucket" "bucket_source_data" {
     }
   }
   
-  
-  
   replication_configuration {
     role = var.sameaccount_replication_rule
 
@@ -56,7 +48,7 @@ resource "aws_s3_bucket" "bucket_source_data" {
       status = var.replication_rules_enabled
 
       destination {
-        bucket             = data.aws_s3_bucket.destination_bucket_data.bucket
+        bucket             = var.destination_bucket
         replica_kms_key_id = var.kms_master_key_id
       }
 
