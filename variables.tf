@@ -56,6 +56,12 @@ variable "standard_ia_days" {
     default     = 30
 }
 
+
+variable "expiration_days" {
+    type        = number
+    description = "Apply to all objects in the bucket"
+    default     = 90
+}
 variable "standard_ia" {
     type        = string
     description = "Apply to all objects in the bucket"
