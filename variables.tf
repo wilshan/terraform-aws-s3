@@ -45,7 +45,7 @@ variable "lifecycle_rule_id" {
 }
 
 variable "lifecycle_rule_enabled" {
-    type        = bool
+    type        = string
     description = "Apply to all objects in the bucket"
     default     = ""
 }
