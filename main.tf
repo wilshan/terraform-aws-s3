@@ -59,7 +59,7 @@ resource "aws_s3_bucket" "bucket_source_data" {
       }
     }
   }
-  resource "aws_s3_bucket_public_access_block" "bucket" {
+  resource "aws_s3_bucket_public_access_block" "bucket_source_data" {
   bucket                  = aws_s3_bucket.bucket_source_data.id
   block_public_acls       = true
   block_public_policy     = true
