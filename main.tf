@@ -3,6 +3,10 @@
 resource "aws_s3_bucket" "bucket_source_data" {
   bucket = var.bucketname
   acl    = var.acl
-  tags   = var.tags
+  tags = {
+    environment = "test"
+  }
+  
+  {
   versioning = var.versioning_enabled
   }
