@@ -60,6 +60,7 @@ resource "aws_s3_bucket" "bucket_source_data" {
     }
   }
   
+#need to see tomrw
   
   data "aws_s3_bucket" "bucket_source_data" {
   bucket_id = var.bucket_id 
