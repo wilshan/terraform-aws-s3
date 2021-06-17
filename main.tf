@@ -42,8 +42,8 @@ resource "aws_s3_bucket" "bucket_source_data" {
   }
   
   data "aws_s3_bucket" "destination_bucket_data" {
-    filter
-    {name = "tag:Name"
+    filter {
+     name = "tag:Name"
      values = ["mydestinationbucket"]
     }
 } 
