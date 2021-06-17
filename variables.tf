@@ -95,5 +95,5 @@ variable "replication_rules_enabled" {
 variable "replicate_objects_encryption" {
     type        = bool
     description = "Replicate objects encrypted with AWS KMS"
-    default     = ""
+    default     = 
 }
