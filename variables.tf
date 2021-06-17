@@ -106,3 +106,9 @@ variable "replicate_objects_encryption" {
     type        = bool
     description = "Replicate objects encrypted with AWS KMS"
 }
+
+variable "replica_kms_id" {
+    type        = string
+    description = "Replicate objects encrypted with AWS KMS"
+  default     = ""
+}
