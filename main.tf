@@ -1,5 +1,10 @@
 # Bucket creation to keep source data
-
+data "aws_s3_bucket" "destination_bucket_data" {
+    filter {
+     name = "tag:Name"
+     values = ["mydestinationbucket"]
+    }
+} 
 resource "aws_s3_bucket" "bucket_source_data" {
   bucket = var.bucketname
   acl    = var.acl
@@ -41,12 +46,7 @@ resource "aws_s3_bucket" "bucket_source_data" {
     }
   }
   
-  data "aws_s3_bucket" "destination_bucket_data" {
-    filter {
-     name = "tag:Name"
-     values = ["mydestinationbucket"]
-    }
-} 
+  
   
   replication_configuration {
     role = var.sameaccount_replication_rule
