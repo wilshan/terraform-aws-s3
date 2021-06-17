@@ -26,13 +26,13 @@ resource "aws_s3_bucket" "bucket_source_data" {
     prefix = var.prefix
 
     transition {
-      days          = var.STANDARD_IA_days
-      storage_class = var.STANDARD_IA
+      days          = var.standard_ia_days
+      storage_class = var.standard_ia
     }
 
     transition {
-      days          = var.GLACIER_days
-      storage_class = var.GLACIER
+      days          = var.glacier_days
+      storage_class = var.glacier
     }
 
     expiration {
