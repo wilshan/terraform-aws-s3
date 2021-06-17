@@ -86,6 +86,11 @@ variable "sameaccount_replication_rule" {
     default     = ""
 }
 
+variable "destination_bucket" {
+    type        = string
+    description = "Details of destination bucket"
+    default     = ""
+}
 variable "prefix" {
     type        = string
     description = "This rule applies to all objects in the bucket"
