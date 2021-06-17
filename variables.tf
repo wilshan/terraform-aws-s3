@@ -70,7 +70,7 @@ variable "standard_ia" {
 variable "glacier_days" {
     type        = number
     description = "Apply to all objects in the bucket"
-    default     = 30
+    default     = 90
 }
 
 variable "glacier" {
