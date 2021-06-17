@@ -53,25 +53,25 @@ variable "lifecycle_rule_enabled" {
 variable "standard_ia_days" {
     type        = number
     description = "Apply to all objects in the bucket"
-    default     = ""
+    default     = 30
 }
 
 variable "standard_ia" {
-    type        = number
+    type        = string
     description = "Apply to all objects in the bucket"
-    default     = ""
+    default     = "standard_ia"
 }
 
 variable "glacier_days" {
     type        = number
     description = "Apply to all objects in the bucket"
-    default     = ""
+    default     = 30
 }
 
 variable "glacier" {
     type        = number
     description = "Apply to all objects in the bucket"
-    default     = ""
+    default     = "glacier"
 }
 
 variable "sameaccount_replication_rule" {
