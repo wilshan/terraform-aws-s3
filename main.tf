@@ -49,7 +49,7 @@ resource "aws_s3_bucket" "bucket_source_data" {
 
       destination {
         bucket             = var.destination_bucket
-        replica_kms_key_id = var.kms_master_key_id
+        replica_kms_key_id = var.replica_kms_id
       }
 
       source_selection_criteria {
