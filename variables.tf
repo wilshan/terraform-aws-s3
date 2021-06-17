@@ -69,7 +69,7 @@ variable "glacier_days" {
 }
 
 variable "glacier" {
-    type        = number
+    type        = string
     description = "Apply to all objects in the bucket"
     default     = "glacier"
 }
