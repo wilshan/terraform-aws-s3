@@ -3,17 +3,15 @@ variable "region_name" {
   default = ""
 }
 
-variable "tags" {
-  type = map(string)
-  default = {
-    "name" : "mybucket"
-  }
+variable "env" {
+  type = string
+  default = string
 }
 
 variable "bucketname" {
   description = "Name of the bucket"
   type        = string
-  default     = "private"
+  default     = ""
 }
 
 variable "acl" {
@@ -30,12 +28,78 @@ variable "versioning_enabled" {
 
 variable "kms_master_key_id" {
     type        = string
-    description = "(optional) The AWS KMS master key ID used for the SSE-KMS encryption. This can only be used when you set the value of sse_algorithm as aws:kms. The default aws/s3 AWS KMS master key is used if this element is absent while the sse_algorithm is aws:kms."
+    description = "The AWS KMS master key ID used for the SSE-KMS encryption"
     default     = ""
 }
 
 variable "sse_algorithm" {
     type        = string
-    description = "(required) The server-side encryption algorithm to use. Valid values are AES256 and aws:kms"
+    description = "Required Valid values are AES256 and aws:kms"
+    default     = ""
+}
+
+variable "lifecycle_rule_id" {
+    type        = string
+    description = "Apply to all objects in the bucket"
+    default     = ""
+}
+
+variable "lifecycle_rule_enabled" {
+    type        = bool
+    description = "Apply to all objects in the bucket"
+    default     = ""
+}
+
+variable "standard_ia_days" {
+    type        = number
+    description = "Apply to all objects in the bucket"
+    default     = ""
+}
+
+variable "standard_ia" {
+    type        = number
+    description = "Apply to all objects in the bucket"
+    default     = ""
+}
+
+variable "glacier_days" {
+    type        = number
+    description = "Apply to all objects in the bucket"
+    default     = ""
+}
+
+variable "glacier" {
+    type        = number
+    description = "Apply to all objects in the bucket"
+    default     = ""
+}
+
+variable "sameaccount_replication_rule" {
+    type        = string
+    description = "IAM rule to access s3 objects from same account in different bucket"
+    default     = ""
+}
+
+variable "prefix" {
+    type        = string
+    description = "This rule applies to all objects in the bucket"
+    default     = ""
+}
+
+variable "replication_rules_enabled" {
+    type        = string
+    description = "IAM rule to access s3 objects from same account in different bucket"
+    default     = ""
+}
+
+variable "replication_rules_enabled" {
+    type        = string
+    description = "IAM rule to access s3 objects from same account in different bucket"
+    default     = ""
+}
+
+variable "replicate_objects_encryption" {
+    type        = bool
+    description = "Replicate objects encrypted with AWS KMS"
     default     = ""
 }
