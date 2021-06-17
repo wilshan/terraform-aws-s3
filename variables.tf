@@ -92,12 +92,6 @@ variable "replication_rules_enabled" {
     default     = ""
 }
 
-variable "replication_rules_enabled" {
-    type        = string
-    description = "IAM rule to access s3 objects from same account in different bucket"
-    default     = ""
-}
-
 variable "replicate_objects_encryption" {
     type        = bool
     description = "Replicate objects encrypted with AWS KMS"
