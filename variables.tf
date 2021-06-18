@@ -112,3 +112,9 @@ variable "replica_kms_id" {
     description = "Replicate objects encrypted with AWS KMS"
   default     = ""
 }
+
+variable "bucket_name" {
+    type        = string
+    description = "Replicate source bucket objects"
+  default     = ""
+}
