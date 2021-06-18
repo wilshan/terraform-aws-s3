@@ -63,24 +63,17 @@ resource "aws_s3_bucket" "bucket_source_data" {
 #need to see tomrw
   
   data "aws_s3_bucket" "bucket_source_data" {
-  bucket_id = var.bucket_id 
+  bucket = var.bucket_name
 filter   {                                                       
     name = "tag:environment"
    values = ["test"]
   }   
 }
- resource "aws_s3_bucket_public_access_block" "s3Public" {
-bucket = "${aws_s3_bucket.bucket_source_data.bucket_id}"
-block_public_acls = true
-block_public_policy = true
-ignore_public_acls      = true
-restrict_public_buckets = true
+ resource "aws_s3_bucket_public_access_block" "bucket_source_data" {
+ bucket                  = data.aws_s3_bucket.bucket_source_data.bucket
+  block_public_acls       = true
+  block_public_policy     = true
+  ignore_public_acls      = true
+  restrict_public_buckets = true
 }
- # resource "aws_s3_bucket_public_access_block" "bucket_source_data" {
-# bucket                  = aws_s3_bucket.bucket_source_data.id
- # block_public_acls       = true
- # block_public_policy     = true
-  #ignore_public_acls      = true
-  #restrict_public_buckets = true
-#}
 }
