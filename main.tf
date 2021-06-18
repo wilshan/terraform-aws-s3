@@ -60,7 +60,6 @@ resource "aws_s3_bucket" "bucket_source_data" {
     }
   }
   
-#need to see tomrw
   
   data "aws_s3_bucket" "bucket_source_data" {
   bucket = var.bucket_name
@@ -76,4 +75,4 @@ filter   {
   ignore_public_acls      = true
   restrict_public_buckets = true
 }
-}
+
