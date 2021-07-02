@@ -72,3 +72,6 @@ resource "aws_s3_bucket" "bucket_source_data" {
   restrict_public_buckets = true
 }
 
+output "arn" {
+  value = aws_s3_bucket.bucket_source_data.arn
+}
