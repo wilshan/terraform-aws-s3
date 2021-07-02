@@ -44,10 +44,10 @@ variable "lifecycle_rule_id" {
     default     = ""
 }
 
-variable "lifecycle_rule_enabled" {
-    type        = bool
-    description = "Apply to all objects in the bucket"
-}
+#variable "lifecycle_rule_enabled" {
+#    type        = bool
+#    description = "Apply to all objects in the bucket"
+#}
 
 variable "standard_ia_days" {
     type        = number
@@ -102,10 +102,10 @@ variable "replication_rules_enabled" {
     default     = ""
 }
 
-variable "replicate_objects_encryption" {
-    type        = bool
-    description = "Replicate objects encrypted with AWS KMS"
-}
+#variable "replicate_objects_encryption" {
+#    type        = bool
+#    description = "Replicate objects encrypted with AWS KMS"
+#}
 
 variable "replica_kms_id" {
     type        = string
